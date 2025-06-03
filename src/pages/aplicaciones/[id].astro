@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import GitLogo from "../../components/GitLogo.astro";
+import ButtonDowload from "../../components/ButtonDowload.astro";
+import Back from "../../components/Back.astro";
+const apps = await getCollection("apps");
+export async function getStaticPaths() {
+    const apps = await getCollection("apps");
+    return apps.map((app) => ({
+        params: { id: app.slug },
+        props: { app },
+    }));
+}
+
+const { app } = Astro.props;
+const { data, slug } = app;
+const { title, developer, img, repo, name_repo, languages, carpetaBucket ,filename } = data;
+const { Content } = await render(app);
+
+import {URL_API} from "astro:env/server";
+const url = URL_API;
+console.log(url)
+
+let downloadUrl = null;
+try {
+  const response = await fetch(`${url}/download/${carpetaBucket}/${filename}`);
+  const data = await response.json();
+  if (data.url) {
+    downloadUrl = data.url;
+  }
+} catch (err) {
+  console.error("Error al obtener la URL:", err);
+}
+---
+
+<Layout title={`${title} - Dev Apps`}>
+    <div class="flex p-8 gap-8">
+        <aside class="flex flex-col items-center gap-3">
+            <a href="/" class="hover:underline opacity-100">
+                <Back />
+            </a>
+            <img
+                transition:name={`img-${slug}`}
+                class="rounded w-72 h-auto shadow-xl"
+                src={`/${img}`}
+                alt={title}
+            />
+
+                <ButtonDowload/ url={downloadUrl} /> 
+           
+        </aside>
+
+        
+
+        <main class="max-w-3xl pt-14">
+            <h1
+                transition:name={`title-${slug}`}
+                class="text-4xl font-bold mb-4"
+            >
+                {title}
+            </h1>
+            <div class="prose prose-invert">
+                <Content />
+                <div class="text-xg pt-8">
+                    <p
+                        transition:name={`lenguajes-${slug}`}
+                        class="font-bold text-lg"
+                    >
+                        📖 Lenguajes usados:
+                    </p>
+                    <ul class="list-disc ml-4 ps-7">
+                        {languages.map((lang) => <li>{lang}</li>)}
+                    </ul>
+                </div>
+                <div class="text-xg pt-3">
+                    <a
+                        href={repo}
+                        target="_blank"
+                        class="flex items-center gap-2 mt-2"
+                    >
+                        <GitLogo name_repo={name_repo} />
+                        <span class="text-xg">{developer}</span>
+                    </a>
+                </div>
+            </div>
+        </main>
+    </div>
+</Layout>
+
+
+<script type="module">
+  // Función que devuelve la URL firmada para descargar
+  export async function getDownloadUrl(carpetaBucket, filename) {
+    try {
+      const response = await fetch(`${import.meta.env.PUBLIC_API_BASE_URL}/download/${carpetaBucket}/${filename}`);
+      const data = await response.json();
+
+      if (data.url) {
+        return data.url;
+      } else {
+        throw new Error("No se pudo obtener la URL de descarga.");
+      }
+    } catch (err) {
+      console.error("Error al obtener la URL:", err);
+      return null;
+    }
+  }
+</script>
