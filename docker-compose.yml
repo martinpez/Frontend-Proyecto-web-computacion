@@ -2,20 +2,20 @@ version: "3.8"
 
 services:
   frontend:
-    build: ./dev-apps  
+    build: ./Frontend-Proyecto-web-computacion
     ports:
       - "3000:3000" 
     environment:
       - NODE_ENV=production 
       # variable de entorno para desarrollo
     volumes:
-     - ./dev-apps:/app
+     - ./Frontend-Proyecto-web-computacion:/app
     networks:
       - webnet  
     restart: unless-stopped
 
   backend1:
-    build: ./Backend_Movil
+    build: ./nodejs-mongodb-RestApi_Andoidproyect
     ports:
       - "3001:3001"
     environment:
@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
 
   backend2:
-    build: ./Backend_Web
+    build: ./Backend-Proyecto-web-computaci-on
     ports:
       - "3002:3002"
     environment:
