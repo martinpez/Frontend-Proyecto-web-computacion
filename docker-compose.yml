@@ -1,5 +1,5 @@
 version: "3.8"
-
+# Docker Compose file for a web application with frontend and two backend services
 services:
   frontend:
     build: ./Frontend-Proyecto-web-computacion
