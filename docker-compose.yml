@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
 
   backend2:
-    build: ./Backend-Proyecto-web-computaci-on
+    build: ./Backend-Proyecto-web-computaci-n
     ports:
       - "3002:3002"
     environment:
