@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./dev-apps  
+    ports:
+      - "3000:3000" 
+    environment:
+      - NODE_ENV=production 
+      # variable de entorno para desarrollo
+    volumes:
+     - ./dev-apps:/app
+    networks:
+      - webnet  
+    restart: unless-stopped
+
+  backend1:
+    build: ./Backend_Movil
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - webnet
+    restart: unless-stopped
+
+  backend2:
+    build: ./Backend_Web
+    ports:
+      - "3002:3002"
+    environment:
+      - NODE_ENV=production
+    networks:
+      - webnet
+    restart: unless-stopped
+
+networks:
+  webnet:  
+    driver: bridge
