@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./Frontend-Proyecto-web-computacion
     ports:
-      - "3000:3000" 
+      - "80:4321" 
     environment:
       - NODE_ENV=production 
       # variable de entorno para desarrollo
