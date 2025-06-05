@@ -1,21 +1,20 @@
 // @ts-check
-import { defineConfig , envField } from 'astro/config';
-
-import tailwindcss from '@tailwindcss/vite';
-
-
+import { defineConfig, envField } from 'astro/config';
+import node from '@astrojs/node';
+import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  
-  },
+  output: 'server',
+  adapter: node({
+    mode: 'standalone',
+  }),
+
+  integrations: [tailwind()],
 
   env: {
-      schema:{
-        URL_API: envField.string({context:'server',access: 'public'})
-    }
-  
-  }
+    schema: {
+      URL_API: envField.string({ context: 'server', access: 'public' }),
+    },
+  },
 });
