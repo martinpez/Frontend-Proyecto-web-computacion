@@ -1,14 +1,10 @@
-FROM node:18-alpine
-
+FROM node:18-alpine as builder
 WORKDIR /app
-
 COPY package.json yarn.lock ./
 RUN yarn install
-
 COPY . .
+RUN yarn build
 
-# Expone el puerto usado por astro preview
-EXPOSE 4321
-
-# Comando para iniciar el servidor de previsualización
-CMD ["yarn", "preview"]
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80
