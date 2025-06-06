@@ -2,16 +2,12 @@ version: "3.8"
 # Docker Compose file for a web application with frontend and two backend services
 services:
   frontend:
-    build: ./Frontend-Proyecto-web-computacion
+    build: .
+    container_name: astro_app
     ports:
-      - "80:4321" 
+      - "80:4321"
     environment:
-      - NODE_ENV=production 
-      # variable de entorno para desarrollo
-    volumes:
-     - ./Frontend-Proyecto-web-computacion:/app
-    networks:
-      - webnet  
+      URL_API: "http://54.219.243.198:3002"  
     restart: unless-stopped
 
   backend1:

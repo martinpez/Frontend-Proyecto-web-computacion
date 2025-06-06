@@ -1,14 +1,23 @@
-FROM node:18-alpine
+# Imagen base con Node y Alpine
+FROM node:20-alpine
 
+# Crea el directorio de trabajo
 WORKDIR /app
 
+# Copia archivos de dependencias
 COPY package.json yarn.lock ./
+
+# Instala dependencias con Yarn
 RUN yarn install
 
+# Copia el resto del proyecto
 COPY . .
 
-# Expone el puerto usado por astro preview
+# Construye la app
+RUN yarn build
+
+# Expone el puerto que usa Astro preview
 EXPOSE 4321
 
-# Comando para iniciar el servidor de previsualización
+# Comando por defecto en producción
 CMD ["yarn", "preview"]
