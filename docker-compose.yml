@@ -4,7 +4,7 @@ services:
   frontend:
     build: ./Frontend-Proyecto-web-computacion
     ports:
-      - "80:3000"
+      - "3000:3000" 
     environment:
       - NODE_ENV=production
       - URL_API=http://54.183.120.88:3002

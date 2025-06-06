@@ -8,6 +8,8 @@ RUN yarn install
 COPY . .
 RUN yarn build
 
+# Expone el puerto usado por astro preview
 EXPOSE 3000
 
-CMD ["node", "./dist/server/entry.mjs"]
+# Comando para iniciar el servidor de previsualización
+CMD ["yarn", "preview"]
