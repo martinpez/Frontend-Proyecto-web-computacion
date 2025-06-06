@@ -1,17 +1,18 @@
 version: "3.8"
-
+# Docker Compose file for a web application with frontend and two backend services
 services:
   frontend:
     build: ./Frontend-Proyecto-web-computacion
     ports:
-      - "3000:3000" 
+      - "80:4321" 
     environment:
-      - NODE_ENV=production
-      - URL_API=http://54.183.120.88:3002
+      - NODE_ENV=production 
+      # variable de entorno para desarrollo
+    volumes:
+     - ./Frontend-Proyecto-web-computacion:/app
     networks:
-      - webnet
+      - webnet  
     restart: unless-stopped
-    command: node ./dist/server/entry.mjs
 
   backend1:
     build: ./nodejs-mongodb-RestApi_Andoidproyect
@@ -34,5 +35,5 @@ services:
     restart: unless-stopped
 
 networks:
-  webnet:
+  webnet:  
     driver: bridge
