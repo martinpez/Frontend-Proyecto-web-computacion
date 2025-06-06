@@ -19,9 +19,9 @@ const { title, developer, img, repo, name_repo, languages, carpetaBucket ,filena
 const { Content } = await render(app);
 
 
-const URL_API = import.meta.env.PUBLIC_API_URL;
+const URL_API = import.meta.env.PUBLIC_API_URL || import.meta.env.URL_API || "#";
 const url = URL_API;
-console.log(url)
+//console.log(url)
 
 let downloadUrl = null;
 try {
@@ -94,7 +94,7 @@ try {
   // Función que devuelve la URL firmada para descargar
   export async function getDownloadUrl(carpetaBucket, filename) {
     try {
-      const response = await fetch(`${import.meta.env.PUBLIC_API_BASE_URL}/download/${carpetaBucket}/${filename}`);
+      const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/download/${carpetaBucket}/${filename}`);
       const data = await response.json();
 
       if (data.url) {
