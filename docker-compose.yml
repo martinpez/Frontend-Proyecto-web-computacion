@@ -9,7 +9,7 @@ services:
     ports:
       - "80:4321"
     environment:
-      URL_API: "http://backend2:3002"  
+      URL_API: http://54.219.243.198:3002
     restart: unless-stopped
 
   backend1:
