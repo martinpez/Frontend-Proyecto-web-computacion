@@ -2,12 +2,14 @@ version: "3.8"
 # Docker Compose file for a web application with frontend and two backend services
 services:
   frontend:
-    build: .
+    build: ./Frontend-Proyecto-web-computacion
     container_name: astro_app
+    depends_on:
+      - backend2
     ports:
       - "80:4321"
     environment:
-      URL_API: "http://54.219.243.198:3002"  
+      URL_API: "http://backend2:3002"  
     restart: unless-stopped
 
   backend1:

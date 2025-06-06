@@ -20,4 +20,4 @@ RUN yarn build
 EXPOSE 4321
 
 # Comando por defecto en producción
-CMD ["yarn", "preview"]
+CMD ["yarn", "preview", "--host", "--port", "4321"]
