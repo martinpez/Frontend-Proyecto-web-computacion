@@ -12,6 +12,8 @@ export async function getStaticPaths() {
         props: { app },
     }));
 }
+export const prerender = true;
+
 
 const { app } = Astro.props;
 const { data, slug } = app;
@@ -48,7 +50,7 @@ try {
                 alt={title}
             />
 
-                <ButtonDowload/ url={downloadUrl} /> 
+                <ButtonDowload/ server:defer url={downloadUrl} /> 
            
         </aside>
 
