@@ -18,7 +18,8 @@ const { data, slug } = app;
 const { title, developer, img, repo, name_repo, languages, carpetaBucket ,filename } = data;
 const { Content } = await render(app);
 
-import {URL_API} from "astro:env/server";
+
+const URL_API = import.meta.env.PUBLIC_API_URL;
 const url = URL_API;
 console.log(url)
 
