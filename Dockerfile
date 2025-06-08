@@ -32,4 +32,4 @@ COPY --from=builder /app/dist ./dist
 EXPOSE 4321
 
 # 8. Comando de inicio optimizado
-CMD ["node", "./dist/server/entry.mjs"]
+CMD ["node", "./dist/server/entry.mjs", "--host", "0.0.0.0", "--port", "4321"]
