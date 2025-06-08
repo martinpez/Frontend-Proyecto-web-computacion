@@ -29,6 +29,8 @@ COPY --from=builder /app/dist ./dist
 # RUN yarn install --production --frozen-lockfile
 
 # 7. Puerto expuesto
+ENV HOST=0.0.0.0
+ENV PORT=4321
 EXPOSE 4321
 
 # 8. Comando de inicio optimizado
