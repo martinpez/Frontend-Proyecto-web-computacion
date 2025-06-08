@@ -1,6 +1,11 @@
 ---
+
 const {url} = Astro.props;
+export const prerender = true;
+"use server"
+
 ---
+
 
 <button type="button" class="button" onclick={`window.open('${url}', '_blank')`} >
     <span class="button__text">Descargar</span>
@@ -22,7 +27,7 @@ const {url} = Astro.props;
 </button>
 
 <style>
-    /* From Uiverse.io by andrew-demchenk0 */
+    
     .button {
         --main-focus: #2d8cf0;
         --font-color: #dedede;

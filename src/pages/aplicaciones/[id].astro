@@ -5,6 +5,7 @@ import GitLogo from "../../components/GitLogo.astro";
 import ButtonDowload from "../../components/ButtonDowload.astro";
 import Back from "../../components/Back.astro";
 const apps = await getCollection("apps");
+
 export async function getStaticPaths() {
     const apps = await getCollection("apps");
     return apps.map((app) => ({
@@ -12,8 +13,8 @@ export async function getStaticPaths() {
         props: { app },
     }));
 }
-export const prerender = true;
 
+export const prerender = true;
 
 const { app } = Astro.props;
 const { data, slug } = app;
@@ -50,7 +51,7 @@ try {
                 alt={title}
             />
 
-                <ButtonDowload/ server:defer url={downloadUrl} /> 
+                <ButtonDowload/ server:defer url={downloadUrl} />
            
         </aside>
 
@@ -93,7 +94,6 @@ try {
 
 
 <script type="module">
-  // Función que devuelve la URL firmada para descargar
   export async function getDownloadUrl(carpetaBucket, filename) {
     try {
       const response = await fetch(`${import.meta.env.PUBLIC_API_URL}/download/${carpetaBucket}/${filename}`);
