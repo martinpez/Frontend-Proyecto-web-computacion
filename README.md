@@ -1,48 +1,105 @@
-# Astro Starter Kit: Basics
+# Plataforma Web de Aplicaciones Móviles
 
-```sh
-yarn create astro@latest -- --template basics
+Aplicación web desarrollada con **Astro**, diseñada para ofrecer una interfaz de consulta y acceso a aplicaciones móviles mediante enlaces de descarga proporcionados por un servicio backend.
+
+Este proyecto forma parte de una solución compuesta por dos componentes independientes: un frontend encargado de la presentación e interacción con el usuario y un backend responsable de proporcionar la información necesaria para las descargas.
+
+## Arquitectura del proyecto
+
+La solución está dividida en dos repositorios:
+
+| Componente | Descripción | Repositorio |
+|---|---|---|
+| Frontend | Interfaz web y experiencia de usuario. | [Frontend](https://github.com/martinpez/Frontend-Proyecto-web-computacion) |
+| Backend | Servicio encargado de proporcionar las URL de descarga de las aplicaciones móviles. | [Backend](https://github.com/martinpez/Backend-Proyecto-web-computaci-n) |
+
+**Repositorio relacionado:**
+
+[Consultar código fuente del Backend](https://github.com/martinpez/Backend-Proyecto-web-computaci-n)
+
+## Tecnologías
+
+- **Astro:** framework utilizado para el desarrollo de la aplicación web.
+- **JavaScript:** lógica e interactividad del frontend.
+- **HTML5:** estructura de la aplicación.
+- **CSS3:** presentación y estilos de la interfaz.
+- **Yarn:** gestión de dependencias y ejecución de scripts.
+
+## Requisitos
+
+Antes de ejecutar el proyecto, asegúrate de tener instalado:
+
+- Node.js.
+- Yarn.
+- Git.
+
+## Instalación y ejecución
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/martinpez/Frontend-Proyecto-web-computacion.git
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Ingresa al directorio:
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+```bash
+cd Frontend-Proyecto-web-computacion
+```
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+Instala las dependencias:
 
-## 🚀 Project Structure
+```bash
+yarn install
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+Inicia el servidor de desarrollo:
+
+```bash
+yarn dev
+```
+
+La aplicación estará disponible en:
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+http://localhost:4321
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Comandos disponibles
 
-## 🧞 Commands
+| Comando | Descripción |
+|---|---|
+| `yarn install` | Instala las dependencias. |
+| `yarn dev` | Inicia el servidor de desarrollo. |
+| `yarn build` | Genera la versión de producción. |
+| `yarn preview` | Permite visualizar la versión compilada. |
 
-All commands are run from the root of the project, from a terminal:
+## Integración con el Backend
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `yarn install`             | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
+Este frontend trabaja conjuntamente con un servicio backend independiente, encargado de proporcionar las direcciones de descarga de las aplicaciones móviles.
 
-## 👀 Want to learn more?
+Para consultar su implementación, configuración y código fuente, visita:
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+**[Backend - Proyecto Web de Computación](https://github.com/martinpez/Backend-Proyecto-web-computaci-n)**
+
+## Ejecución del proyecto completo
+
+Para ejecutar la solución completa, es necesario disponer de ambos componentes:
+
+1. Clonar y configurar el repositorio del backend.
+2. Iniciar el servicio backend.
+3. Clonar e instalar las dependencias del frontend.
+4. Configurar la comunicación entre ambos componentes según la dirección del servicio backend.
+5. Iniciar el frontend y verificar la integración.
+
+## Autor
+
+**Martín Pérez**
+
+Desarrollador de software | Ingeniería de Sistemas
+
+[GitHub](https://github.com/martinpez)
+
+---
+
+*Proyecto académico de desarrollo web y computación.*
